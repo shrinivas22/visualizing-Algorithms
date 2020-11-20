@@ -6,7 +6,7 @@ export function getMergeAnimations({ arr, sizeofArr }) {
   if (sz <= 1) {
     return arr;
   }
-  let tempArr = arr;
+  const tempArr = arr.slice();
   console.log(tempArr);
   mergeSort(arr, 0, sz - 1, tempArr, animations);
   return animations;
@@ -19,15 +19,15 @@ function mergeSort(arr, start, end, tempArr, animations) {
   }
   const mid = parseInt((start + end) / 2);
   console.log("mid:", mid, start, end);
-  mergeSort(arr, start, mid, tempArr, animations);
-  mergeSort(arr, mid + 1, end, tempArr, animations);
+  mergeSort(tempArr, start, mid, arr, animations);
+  mergeSort(tempArr, mid + 1, end, arr, animations);
   mergeArrays(arr, start, mid, end, tempArr, animations);
 }
 
 function mergeArrays(arr, start, mid, end, tempArr, animations) {
-  let i = start,
-    j = start,
-    k = mid + 1;
+  let i = start;
+  let  j = start;
+  let  k = mid + 1;
   while (j <= mid && k <= end) {
     //push the 2 elements in comparirsion into the animations array
     // We do this twice to show a difference while and after sorting
@@ -41,16 +41,17 @@ function mergeArrays(arr, start, mid, end, tempArr, animations) {
       animations.push([i, tempArr[k]]);
       arr[i++] = tempArr[k++];
     }
-  }
+  } 
   while (j <= mid) {
     animations.push([j, j]);
 
     animations.push([j, j]);
 
-    animations.push([i, tempArr[j]]);
+   animations.push([i, tempArr[j]]);
     arr[i++] = tempArr[j++];
   }
-  while (k <= end) {
+
+   while (k <= end) {
     animations.push([k, k]);
 
     animations.push([k, k]);
@@ -59,4 +60,6 @@ function mergeArrays(arr, start, mid, end, tempArr, animations) {
 
     arr[i++] = tempArr[k++];
   }
+   
+  
 }

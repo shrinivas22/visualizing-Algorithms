@@ -1,4 +1,4 @@
-export const quickSortAnimations = (arr) => {
+export const quickSortAnimations = ({arr}) => {
   if (arr.length <= 1) {
     return [];
   }

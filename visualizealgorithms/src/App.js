@@ -25,6 +25,7 @@ import Sidebar from "./Components/sideBar";
 
 function App() {
   return (
+    <div class="appMain">
      <Router>
        <ProSidebar>
   <SidebarHeader>
@@ -35,9 +36,14 @@ function App() {
     <MenuItem  >Sorting
      <Link to="/Sorting"></Link>
     </MenuItem>
+    <MenuItem  >Searching
+     <Link to="/Searching"></Link>
+    </MenuItem>
     <SubMenu title="Components" >
-      <MenuItem>Component 1</MenuItem>
-      <MenuItem>Component 2</MenuItem>
+      <MenuItem>Searching
+      
+      </MenuItem>
+      <MenuItem></MenuItem>
     </SubMenu>
   </Menu>
   </SidebarContent>
@@ -47,11 +53,15 @@ function App() {
 </ProSidebar>
 
  <Switch>
-    <Route exact path="/" childern={<Searching />}></Route>
-    <Route path="/Sorting" children={<Sorting />}></Route>
+    <Route path="/Searching">
+    <Searching />
+    </Route>
+    <Route path="/Sorting">
+      <Sorting />
+    </Route>
   </Switch>
 </Router>
-    
+   </div> 
   );
 }
 
